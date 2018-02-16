@@ -2,6 +2,8 @@
 
 A simple ViewPager with an indicator to know the _current / total_ items on it.
 
+![demo gif](https://raw.githubusercontent.com/adalpari/NumberedViewPager/master/media/demo.gif)
+
 # How to use
 
 ## 1.- Add the library into gradle
