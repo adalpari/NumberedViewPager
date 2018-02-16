@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,8 +19,6 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.logging.Logger;
 
 /**
  * Created by Adalberto Plaza on 16/02/2018.
@@ -91,7 +90,11 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         counter.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
         counter.setGravity(Gravity.RIGHT);
 
-        Drawable roundedBackground = ContextCompat.getDrawable(context, R.drawable.round);
+        GradientDrawable roundedBackground = new GradientDrawable();
+        roundedBackground.setShape(GradientDrawable.RECTANGLE);
+        roundedBackground.setCornerRadii(new float[] { 20, 20, 20, 20, 20, 20, 20, 20 });
+        roundedBackground.setColor(numberCounterColor);
+
         final int sdk = android.os.Build.VERSION.SDK_INT;
         if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
             counter.setBackgroundDrawable(roundedBackground);
@@ -101,7 +104,6 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
         counter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         counter.setTextColor(numberCounterTextColor);
-        counter.setBackgroundColor(numberCounterColor);
 
         this.addView(counter);
     }
