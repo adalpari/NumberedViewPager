@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="number_counter_margin">10dp</dimen>
-    <dimen name="number_counter_padding">5dp</dimen>
-    <dimen name="number_counter_text_size">12sp</dimen>
-</resources>
