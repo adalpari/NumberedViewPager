@@ -6,6 +6,8 @@ import static android.support.v4.view.ViewPager.SCROLL_STATE_IDLE;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -14,9 +16,10 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.logging.Logger;
 
 /**
  * Created by Adalberto Plaza on 16/02/2018.
@@ -31,27 +34,39 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
     public NumberedViewPagerHandler(Context context) {
         super(context);
-        initViews(context);
+        initViews(context, null);
     }
 
     public NumberedViewPagerHandler(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initViews(context);
+        initViews(context, attrs);
     }
 
     public NumberedViewPagerHandler(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initViews(context);
+        initViews(context, attrs);
     }
 
     public NumberedViewPagerHandler(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initViews(context);
+        initViews(context, attrs);
     }
 
-    private void initViews(Context context) {
+    private void initViews(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.NumberCounter);
+
+        int numberCounterColor = Color.BLACK;
+        int numberCounterTextColor = Color.WHITE;
+        try {
+            numberCounterColor = a.getColor(R.styleable.NumberCounter_nc_color, Color.BLACK);
+            numberCounterTextColor = a.getColor(R.styleable.NumberCounter_nc_text_color, Color.WHITE);
+        } catch (Throwable throwable) {
+        } finally {
+            a.recycle();
+        }
+
         initViewPager(context);
-        initCounter(context);
+        initCounter(context, numberCounterColor, numberCounterTextColor);
         initAnimation(context);
         initNumberListener();
     }
@@ -62,7 +77,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         this.addView(viewPager);
     }
 
-    private void initCounter(Context context) {
+    private void initCounter(Context context, int numberCounterColor, int numberCounterTextColor) {
         final RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
@@ -85,6 +100,8 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         }
 
         counter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        counter.setTextColor(numberCounterTextColor);
+        counter.setBackgroundColor(numberCounterColor);
 
         this.addView(counter);
     }

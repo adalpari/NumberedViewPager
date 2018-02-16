@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
 
     <adalpari.github.com.numberedviewpager.NumberedViewPagerHandler
         android:id="@+id/numbered_view_page_handler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        custom:nc_color="#efa357"
+        custom:nc_text_color="#9274fb"/>
 
 </LinearLayout>
