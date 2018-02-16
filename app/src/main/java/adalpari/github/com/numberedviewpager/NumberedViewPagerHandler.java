@@ -64,6 +64,8 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
     private void initCounter(Context context) {
         final RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+
         int marginInPx = context.getResources().getDimensionPixelOffset(R.dimen.number_counter_margin);
         layoutParams.setMargins(marginInPx, marginInPx, marginInPx, marginInPx);
 
@@ -82,7 +84,6 @@ public class NumberedViewPagerHandler extends RelativeLayout {
             counter.setBackground(roundedBackground);
         }
 
-//        counter.setTextColor(R.);
         counter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
 
         this.addView(counter);
