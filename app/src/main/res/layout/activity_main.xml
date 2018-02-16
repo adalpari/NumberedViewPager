@@ -8,6 +8,7 @@
 
 
     <adalpari.github.com.numberedviewpager.NumberedViewPagerHandler
+        android:id="@+id/numbered_view_page_handler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

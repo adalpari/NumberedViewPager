@@ -57,6 +57,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
     private void initViewPager(Context context) {
         viewPager = new ViewPager(context);
         viewPager.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        this.addView(viewPager);
     }
 
     private void initCounter(Context context) {
@@ -69,7 +70,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
         int paddingInPx = context.getResources().getDimensionPixelOffset(R.dimen.number_counter_padding);
         counter.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
-        counter.setGravity(Gravity.RIGHT | Gravity.TOP);
+        counter.setGravity(Gravity.RIGHT);
 
         Drawable roundedBackground = ContextCompat.getDrawable(context, R.drawable.round);
         final int sdk = android.os.Build.VERSION.SDK_INT;
@@ -81,7 +82,8 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
 //        counter.setTextColor(R.);
         counter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        counter.setText("TEXTO");
+
+        this.addView(counter);
     }
 
     private void initAnimation(Context context) {
