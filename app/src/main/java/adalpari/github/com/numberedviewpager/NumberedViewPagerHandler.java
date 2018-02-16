@@ -157,9 +157,12 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
     private void setImageNumber(int position) {
         if (viewPager != null && counter != null) {
+            Context context = counter.getContext();
+
             int total = viewPager.getAdapter().getCount();
             int realPosition = position + 1;
-            counter.setText(realPosition + "/" + total);
+            String text = context.getString(R.string.counter, realPosition, total);
+            counter.setText(text);
         }
     }
 
