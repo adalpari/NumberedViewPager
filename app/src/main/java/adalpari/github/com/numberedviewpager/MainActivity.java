@@ -3,12 +3,13 @@ package adalpari.github.com.numberedviewpager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +24,13 @@ public class MainActivity extends AppCompatActivity {
         NumberedViewPagerHandler numberedViewPagerHandler = findViewById(R.id.numbered_view_page_handler);
 
         List<String> imageUrl = new ArrayList<>();
-        imageUrl.add("1");
-        imageUrl.add("2");
-        imageUrl.add("3");
-        imageUrl.add("4");
-        imageUrl.add("5");
+        imageUrl.add("https://industriamusical.es/wp-content/uploads/2013/08/Android1.jpg");
+        imageUrl.add("https://images.techhive.com/images/article/2016/09/android-old-habits-100682662-primary.idge.jpg");
+        imageUrl.add("https://i2.wp.com/hipertextual.com/files/2016/06/android-nougat-2.png");
+        imageUrl.add("http://s3.amazonaws.com/poderpda/2017/07/Android-O-Logo.jpg");
+        imageUrl.add("https://www.ayudacelular.com/wp-content/uploads/2018/01/Trucos-para-Android.jpg");
 
-        ViewPager viewPager = numberedViewPagerHandler.getViewPager();
-        viewPager.setAdapter(new CustomPagerAdapter(imageUrl, this));
+        numberedViewPagerHandler.setAdapter(new CustomPagerAdapter(imageUrl, this));
     }
 
     class CustomPagerAdapter extends PagerAdapter {
@@ -58,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
             LayoutInflater inflater = LayoutInflater.from(context);
             ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.pager_item, container, false);
 
-            TextView imageText = layout.findViewById(R.id.image_text);
+            ImageView itemImage = layout.findViewById(R.id.item_image);
             String imageUrl = imageUrls.get(position);
-            imageText.setText(imageUrl);
+            Picasso
+                    .with(context)
+                    .load(imageUrl)
+                    .into(itemImage);
 
+            container.addView(layout);
             return layout;
         }
 

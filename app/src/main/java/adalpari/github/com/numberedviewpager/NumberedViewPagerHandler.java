@@ -8,11 +8,13 @@ import android.animation.AnimatorSet;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -118,7 +120,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
     }
 
     private void setImageNumber(int position) {
-        int total = getChildCount();
+        int total = viewPager.getAdapter().getCount();
         int realPosition = position + 1;
         if (counter != null) {
             counter.setText(realPosition + "/" + total);
@@ -142,5 +144,12 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
     public ViewPager getViewPager() {
         return viewPager;
+    }
+
+    public void setAdapter(PagerAdapter pagerAdapter) {
+        if (viewPager != null) {
+            viewPager.setAdapter(pagerAdapter);
+            setImageNumber(0);
+        }
     }
 }
