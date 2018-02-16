@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         NumberedViewPagerHandler numberedViewPagerHandler = findViewById(R.id.numbered_view_page_handler);
 
         List<String> imageUrl = new ArrayList<>();
-        imageUrl.add("https://industriamusical.es/wp-content/uploads/2013/08/Android1.jpg");
-        imageUrl.add("https://images.techhive.com/images/article/2016/09/android-old-habits-100682662-primary.idge.jpg");
+        imageUrl.add("https://www.extremetech.com/wp-content/uploads/2017/03/smiling-android-640x353.jpg");
         imageUrl.add("https://i2.wp.com/hipertextual.com/files/2016/06/android-nougat-2.png");
+        imageUrl.add("https://images.techhive.com/images/article/2016/09/android-old-habits-100682662-primary.idge.jpg");
         imageUrl.add("http://s3.amazonaws.com/poderpda/2017/07/Android-O-Logo.jpg");
         imageUrl.add("https://www.ayudacelular.com/wp-content/uploads/2018/01/Trucos-para-Android.jpg");
 
@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             Picasso
                     .with(context)
                     .load(imageUrl)
+                    .fit()
+                    .centerCrop()
                     .into(itemImage);
 
             container.addView(layout);
