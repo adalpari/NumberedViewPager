@@ -1,6 +1,6 @@
 # NumberedViewPager
 
-A simple ViewPager with an indicator to know the _current / total_ items on it.
+A simple ViewPager with a number indicator to know the _current / total_ items on it.
 
 ![demo gif](https://raw.githubusercontent.com/adalpari/NumberedViewPager/master/media/demo.gif)
 
