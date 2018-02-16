@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NumberedViewPager.iml" filepath="$PROJECT_DIR$/NumberedViewPager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/numberedviewpager2/numberedviewpager2.iml" filepath="$PROJECT_DIR$/numberedviewpager2/numberedviewpager2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/numberedviewpager/numberedviewpager2.iml" filepath="$PROJECT_DIR$/numberedviewpager/numberedviewpager2.iml" />
     </modules>
   </component>
 </project>

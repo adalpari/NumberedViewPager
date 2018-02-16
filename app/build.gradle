@@ -20,7 +20,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':numberedviewpager2')
+    implementation project(':numberedviewpager')
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'

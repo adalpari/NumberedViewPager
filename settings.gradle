@@ -1,1 +1,1 @@
-include ':app', ':numberedviewpager2'
+include ':app', ':numberedviewpager'
