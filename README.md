@@ -49,3 +49,40 @@ NumberedViewPagerHandler numberedViewPagerHandler = findViewById(R.id.numbered_v
 numberedViewPagerHandler.setAdapter(new CustomPagerAdapter(MY_VARIABLES));
 ```
 
+## 4.- Add onDestoy call
+
+In order to avoid memory leaks, call _numberedViewPagerHandler.onDestroy()_ when your activity is destroyed.
+
+```java
+@Override
+protected void onDestroy() {
+    numberedViewPagerHandler.onDestroy();
+    super.onDestroy();
+}
+```
+
+## Important
+You can get the embedded _ViewPager_ from the _NumberedViewPagerHandler_. But, if you want to subscribe to _OnPageChangeListener_, __don't do it directly__, use _NumberedViewPagerHandler.setOnPageChangeListener(...)_ instead.
+
+```java
+ViewPager internalViewPager = numberedViewPagerHandler.getViewPager();
+        
+...
+
+numberedViewPagerHandler.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        // your code
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        // your code
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        // your code
+    }
+});
+```
