@@ -32,6 +32,8 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
     private AnimatorSet numberAnimator;
 
+    private ViewPager.OnPageChangeListener externalOnPageChangeListener;
+
     public NumberedViewPagerHandler(Context context) {
         super(context);
         initViews(context, null);
@@ -134,11 +136,18 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (externalOnPageChangeListener != null) {
+                    externalOnPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                }
             }
 
             @Override
             public void onPageSelected(int position) {
                 setImageNumber(position);
+
+                if (externalOnPageChangeListener != null) {
+                    externalOnPageChangeListener.onPageSelected(position);
+                }
             }
 
             @Override
@@ -150,6 +159,10 @@ public class NumberedViewPagerHandler extends RelativeLayout {
                     case SCROLL_STATE_IDLE:
                         fadeOutImageNumber();
                         break;
+                }
+
+                if (externalOnPageChangeListener != null) {
+                    externalOnPageChangeListener.onPageScrollStateChanged(state);
                 }
             }
         });
@@ -190,5 +203,20 @@ public class NumberedViewPagerHandler extends RelativeLayout {
             viewPager.setAdapter(pagerAdapter);
             setImageNumber(0);
         }
+    }
+
+    public void setOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {
+        this.externalOnPageChangeListener = onPageChangeListener;
+    }
+
+    public void onDestroy() {
+        viewPager = null;
+        counter = null;
+
+        numberAnimator.cancel();
+        numberAnimator.end();
+        numberAnimator = null;
+
+        externalOnPageChangeListener = null;
     }
 }

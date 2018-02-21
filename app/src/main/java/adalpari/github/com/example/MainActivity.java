@@ -18,12 +18,14 @@ import adalpari.github.com.numberedviewpager.NumberedViewPagerHandler;
 
 public class MainActivity extends AppCompatActivity {
 
+    NumberedViewPagerHandler numberedViewPagerHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NumberedViewPagerHandler numberedViewPagerHandler = findViewById(R.id.numbered_view_page_handler);
+        numberedViewPagerHandler = findViewById(R.id.numbered_view_page_handler);
 
         List<String> imageUrl = new ArrayList<>();
         imageUrl.add("https://www.extremetech.com/wp-content/uploads/2017/03/smiling-android-640x353.jpg");
@@ -33,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         imageUrl.add("https://www.ayudacelular.com/wp-content/uploads/2018/01/Trucos-para-Android.jpg");
 
         numberedViewPagerHandler.setAdapter(new CustomPagerAdapter(imageUrl, this));
+    }
+
+    @Override
+    protected void onDestroy() {
+        numberedViewPagerHandler.onDestroy();
+        super.onDestroy();
     }
 
     class CustomPagerAdapter extends PagerAdapter {
