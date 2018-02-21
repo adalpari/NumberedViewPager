@@ -40,7 +40,7 @@ _custom:nc_color_ is the background color of the counter
 
 _custom:nc_text_color_ is the text color of the counter
 
-Dont forget to add the custom scheem in the top paent view _xmlns:custom="http://schemas.android.com/apk/res-auto"_
+Don't forget to add the custom scheem in the top paent view _xmlns:custom="http://schemas.android.com/apk/res-auto"_
 
 ## 3.- Get the NumberedViewPagerHandler in your class and add the PagerAdapter
 
