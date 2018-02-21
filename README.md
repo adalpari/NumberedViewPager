@@ -21,7 +21,7 @@ allprojects {
 
 ```
 dependencies {
-  implementation 'com.github.adalpari:NumberedViewPager:1.0'
+  implementation 'com.github.adalpari:NumberedViewPager:1.1'
 }
 ```
 
