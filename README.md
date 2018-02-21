@@ -1,6 +1,8 @@
 # NumberedViewPager
 
-A simple ViewPager with an indicator to know the _current / total_ items on it.
+A simple ViewPager with a number indicator to know the _current / total_ items on it.
+
+![demo gif](https://raw.githubusercontent.com/adalpari/NumberedViewPager/master/media/demo.gif)
 
 # How to use
 
@@ -29,8 +31,7 @@ dependencies {
 <adalpari.github.com.numberedviewpager.NumberedViewPagerHandler
         android:id="@+id/numbered_view_page_handler"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
         custom:nc_color="#494949"
         custom:nc_text_color="#ffffff"/>
 ```
