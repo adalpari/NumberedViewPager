@@ -87,11 +87,11 @@ public class NumberedViewPagerHandler extends RelativeLayout {
 
         counter.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
         counter.setGravity(Gravity.RIGHT);
-        counter.setLayoutParams(initLayoutParams(context));
+        counter.setLayoutParams(createCounterLayoutParams(context));
         counter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         counter.setTextColor(numberCounterTextColor);
 
-        GradientDrawable roundedBackground = initCounterBackground();
+        GradientDrawable roundedBackground = getCounterBackground();
         if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
             counter.setBackgroundDrawable(roundedBackground);
         } else {
@@ -101,7 +101,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         this.addView(counter);
     }
 
-    private RelativeLayout.LayoutParams initLayoutParams(Context context) {
+    private RelativeLayout.LayoutParams createCounterLayoutParams(Context context) {
         final RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
@@ -111,7 +111,7 @@ public class NumberedViewPagerHandler extends RelativeLayout {
         return layoutParams;
     }
 
-    private GradientDrawable initCounterBackground() {
+    private GradientDrawable getCounterBackground() {
         GradientDrawable roundedBackground = new GradientDrawable();
         roundedBackground.setShape(GradientDrawable.RECTANGLE);
         roundedBackground.setCornerRadii(new float[] { 20, 20, 20, 20, 20, 20, 20, 20 });
