@@ -25,7 +25,7 @@ dependencies {
 }
 ```
 
-## 2.- Add the NumberedViewPagerHandler into your layout
+## 2.- Add the NumberedViewPagerHandler into your layout. This View replace the RecyclerView you are using.
 
 ```xml
 <adalpari.github.com.numberedviewpager.NumberedViewPagerHandler
